@@ -1,6 +1,8 @@
 package testes;
 
 import java.util.Stack;
+
+import model.Bill;
 import model.Money;
 
 public class TestePilha {
@@ -8,7 +10,7 @@ public class TestePilha {
 
         Stack<Money> pilhaDez = new Stack<Money>();
 
-        Money notaDez = new Money(10);
+        Money notaDez = new Money(Bill.TEN);
 
         pilhaDez.push(notaDez);
         pilhaDez.push(notaDez);

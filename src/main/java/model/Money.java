@@ -2,18 +2,18 @@ package model;
 
 public class Money {
 
-    public int value;
+    private final Bill moneyBill;
 
-    public Money(int value){
-        this.value = value;
+    public Money(Bill bill){
+        this.moneyBill = bill;
     }
 
-    public int getValue() {
-        return value;
+    public Bill getMoneyBill() {
+        return moneyBill;
     }
 
-    private void setValue(int value) {
-        this.value = value;
+    public int getMoneyBillValue(){
+        return moneyBill.getBillValue();
     }
 
     @Override
@@ -23,11 +23,11 @@ public class Money {
 
         Money money = (Money) o;
 
-        return getValue() == money.getValue();
+        return getMoneyBill() == money.getMoneyBill();
     }
 
     @Override
     public int hashCode() {
-        return getValue();
+        return getMoneyBill().hashCode();
     }
 }

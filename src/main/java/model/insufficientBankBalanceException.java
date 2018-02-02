@@ -1,4 +1,4 @@
-package Exception;
+package model;
 
 public class insufficientBankBalanceException extends RuntimeException {
 

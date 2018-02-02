@@ -1,46 +1,26 @@
-import Exception.invalidBankAccountException;
+
 import controller.ATMController;
 import model.ATMModel;
+import model.invalidBankAccountException;
 import view.ATMView;
 
 public class Main {
-/*
+
     public static void main(String[] args){
        ATMView atmView = new ATMView();
         ATMModel atmModel = null;
-        try {
-            atmModel = new ATMModel(atmView.getValueFromScreen());
-        } catch (invalidBankAccountException e) {
-            e.printStackTrace();
+
+        while (true) {
+            atmView.requestAccountMsg();
+            try {
+                atmModel = new ATMModel(atmView.getValueFromScreen());
+                break;
+            } catch (invalidBankAccountException e) {
+                System.out.println(e.getMessage());
+            }
         }
+
         ATMController atmController = new ATMController(atmModel, atmView);
-        atmView.requestAccountMsg();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         while (true) {
@@ -53,15 +33,14 @@ public class Main {
             atmView.menuOptionSix();
             atmView.menuOptionChoice();
 
-            int choice;
-            int accHolder;
+            int choice  = atmView.getValueFromScreen();
+            int accountHolder;
 
-            switch (choice   = atmView.getValueFromScreen()) {
+            switch (choice) {
                 case 1:
                     atmView.splitScreen();
 
-                    atmView.bankBalanceMenu();
-                    System.out.print(account.getBankBalance() + "\n");
+                    System.out.println(atmModel.bankBalance());
 
                     atmView.splitScreen();
                     break;
@@ -77,10 +56,16 @@ public class Main {
                     atmView.splitScreen();
 
                     atmView.requestAccountMsg();
-                    accHolder = atmView.getValueFromScreen();
-
+                    accountHolder = atmView.getValueFromScreen();
                     atmView.requestValueMsg();
-                    atmModel.deposit(accHolder, atmView.getValueFromScreen());
+                    while (true) {
+                        try {
+                            atmModel.deposit(accountHolder, atmView.getValueFromScreen());
+                            break;
+                        } catch (invalidBankAccountException e) {
+                            System.out.println(e.getMessage());
+                        }
+                    }
 
                     atmView.splitScreen();
                     break;
@@ -88,10 +73,16 @@ public class Main {
                     atmView.splitScreen();
 
                     atmView.requestAccountMsg();
-                    accHolder = atmView.getValueFromScreen();
-
+                    accountHolder = atmView.getValueFromScreen();
                     atmView.requestValueMsg();
-                    atmModel.transfer(accHolder, atmView.getValueFromScreen());
+                    while (true) {
+                        try {
+                            atmModel.transfer(accountHolder, atmView.getValueFromScreen());
+                            break;
+                        } catch (invalidBankAccountException e) {
+                            System.out.println(e.getMessage());
+                        }
+                    }
 
                     atmView.splitScreen();
                     break;
@@ -110,5 +101,5 @@ public class Main {
             }
 
         }
-    }*/
+    }
 }

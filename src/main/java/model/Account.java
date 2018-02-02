@@ -39,7 +39,7 @@ public class Account {
         if(hasMoney(decrementMoneyValue)) {
             bankBalance -= decrementMoneyValue;
         } else {
-           // throw new Exception.insufficientBankBalanceException("Não há saldo suficiente para transação");
+           throw new insufficientBankBalanceException("Não há saldo suficiente para transação");
         }
     }
 

@@ -1,14 +1,13 @@
 package model;
 
 public class ATMModel {
-    private final Account account;
+    private Account account;
     private final Agency agency;
 
 
-    public ATMModel(){
+    public ATMModel(final int accountNumber) throws invalidBankAccountException {
         agency = new Agency();
-        account = agency.getAccountFromAccounts(0);
-
+        account = agency.getAccountFromAccounts(accountNumber);
     }
 
     /*
@@ -18,6 +17,11 @@ public class ATMModel {
         Remover saldo da conta origem             OK
         Remover as notas sacadas do caixa         TODO
     */
+
+    public double bankBalance(){
+       return account.getBankBalance();
+    }
+
     public void withdraw(final double value){
         account.decrementBankBalance(value);
     }
@@ -27,7 +31,7 @@ public class ATMModel {
     Adicionar saldo a conta   OK
     Adicionar notas ao caixa  TODO
     */
-    public void deposit(final int depositAccountNumber, final double value){
+    public void deposit(final int depositAccountNumber, final double value) throws invalidBankAccountException {
 
         Account depositAccount = agency.getAccountFromAccounts(depositAccountNumber);
 
@@ -42,7 +46,7 @@ public class ATMModel {
     Remover saldo da conta origem           OK
     Adicionar saldo na conta destino        OK
     */
-    public void transfer(final int transferAccountNumber, final double value){
+    public void transfer(final int transferAccountNumber, final double value) throws invalidBankAccountException {
 
         Account transferAccount = agency.getAccountFromAccounts(transferAccountNumber);
 

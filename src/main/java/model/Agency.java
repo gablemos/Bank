@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 public class Agency {
    private final ArrayList<Account> accounts;
@@ -16,21 +15,15 @@ public class Agency {
    }
 
    public boolean existAccount(final Account accountVerify){
-       for (Account account : accounts) {
-            if(account.equals(accountVerify)){
-                return true;
-            }
-       }
-       return false;
+       return (accounts.contains(accountVerify));
    }
 
-   public Account getAccountFromAccounts(final int numberAccount){
+   public Account getAccountFromAccounts(final int numberAccount) throws invalidBankAccountException {
        for(Account account : accounts){
            if(account.isAccount(numberAccount)){
                return account;
            }
        }
-       Optional<Account> account = Optional.empty();
-       return account.get();
+       throw new invalidBankAccountException("Essa conta não existe, ou não faz parte deste banco");
    }
 }

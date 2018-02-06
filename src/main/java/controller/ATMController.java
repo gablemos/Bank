@@ -5,6 +5,7 @@ import model.invalidBankAccountException;
 import view.ATMView;
 
 import java.util.List;
+import java.util.Map;
 
 public class ATMController {
 
@@ -20,6 +21,12 @@ public class ATMController {
         atmView.menuOptionHeader();
         atmView.menuOptionOne();
         atmView.menuOptionTwo();
+        System.out.println("Valor: \t\tR$10\t|\tR$20\t|\tR$50\t|\tR$100\t|");
+        System.out.print("Quantidade: ");
+        for (Object o : atmModel.billInATM().values()){
+            System.out.print("\t"+ o + "\t|\t");
+        }
+        System.out.println("\n");
         atmView.menuOptionThree();
         atmView.menuOptionFour();
         atmView.menuOptionFive();

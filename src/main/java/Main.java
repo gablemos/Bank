@@ -5,6 +5,7 @@ import model.invalidBankAccountException;
 import view.ATMView;
 
 
+
 public class Main {
 
     public static void main(String[] args) {
@@ -56,7 +57,6 @@ public class Main {
                 default:
                     atmController.invalidOption();
             }
-
         }
     }
 
